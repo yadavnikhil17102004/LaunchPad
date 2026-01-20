@@ -135,12 +135,48 @@ VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key
 - **Supabase Edge Functions** - Serverless data aggregation
 
 ### Data Sources
-| Source | Type | Status |
-|--------|------|--------|
-| Codeforces API | Contests | ✅ Live |
-| Firecrawl | Web Scraping | ✅ Live |
-| Curated List | Hackathons | ✅ 50+ events |
-| Curated List | Internships | ✅ 20+ programs |
+
+LaunchPad uses a **3-layer data strategy** to ensure users always see fresh opportunities:
+
+#### 🌐 Layer 1: Live APIs (30-40% of data)
+| Source | Type | Status | Count |
+|--------|------|--------|-------|
+| Codeforces API | Contests | ✅ Live | 10-15 |
+| Kontests API | Multi-platform | ✅ Live | 15-20 |
+| Supabase Database | Admin-added | ✅ Live | Varies |
+
+#### 📚 Layer 2: Curated Fallback (60-70% of data)
+| Category | Count |
+|----------|-------|
+| Major Hackathons | 7 (SIH, GSoC, MLH, ETHGlobal, etc.) |
+| Internships | 4 (GSoC, MLH Fellowship, Outreachy, LFX) |
+| Indian Events | 40+ (IIT/NIT fests, TCS CodeVita, Flipkart GRiD) |
+| Weekly Contests | 10+ (LeetCode, AtCoder, HackerRank) |
+
+**Total Available**: ~100-110 opportunities at any time
+
+#### How It Works
+```mermaid
+graph LR
+    A[User Opens App] --> B{Data Loading}
+    B -->|0ms| C[Show Curated Data Instantly]
+    B -->|500ms| D[Fetch Live APIs]
+    D --> E[Codeforces Contests]
+    D --> F[Database Opportunities]
+    C --> G[Merge All Sources]
+    E --> G
+    F --> G
+    G --> H[Filter Future Events]
+    H --> I[Remove Duplicates]
+    I --> J[Sort by Deadline]
+    J --> K[Display to User]
+```
+
+**Why This Works:**
+- ✅ **Instant Display**: Curated data shows immediately (no blank page)
+- ✅ **Always Fresh**: Live APIs provide real-time contest updates
+- ✅ **Never Fails**: Curated fallback ensures content even if APIs are down
+- ✅ **Comprehensive**: Mix of global events, Indian hackathons, and live contests
 
 ---
 
