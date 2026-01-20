@@ -175,6 +175,109 @@ LaunchPad/
 
 ---
 
+## 🏗️ Architecture
+
+### System Overview
+
+```mermaid
+graph TB
+    subgraph "User's Browser"
+        A[React App]
+        B[React Router]
+        C[TanStack Query]
+    end
+    
+    subgraph "Vercel CDN"
+        D[Static Assets]
+        E[index.html]
+    end
+    
+    subgraph "Supabase Backend"
+        F[(PostgreSQL Database)]
+        G[Authentication Service]
+        H[Edge Functions]
+        I[Row Level Security]
+    end
+    
+    subgraph "External APIs"
+        J[Kontests API]
+        K[Firecrawl API]
+    end
+    
+    A --> D
+    A --> E
+    B --> A
+    C --> A
+    A --> G
+    A --> F
+    A --> H
+    H --> J
+    H --> K
+    F --> I
+    G --> I
+```
+
+### Deployment Flow
+
+```mermaid
+sequenceDiagram
+    participant Dev as Developer
+    participant Git as GitHub
+    participant Vercel as Vercel
+    participant User as End User
+    
+    Dev->>Dev: Make code changes
+    Dev->>Git: git push origin main
+    Git->>Vercel: Webhook trigger
+    Vercel->>Vercel: npm install
+    Vercel->>Vercel: vite build
+    Vercel->>Vercel: Deploy to CDN
+    Vercel->>Dev: Deployment URL
+    User->>Vercel: Visit app
+    Vercel->>User: Serve React app
+```
+
+### Authentication Flow
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant App as React App
+    participant Auth as Supabase Auth
+    participant DB as Supabase DB
+    
+    User->>App: Click "Sign Up"
+    App->>Auth: supabase.auth.signUp()
+    Auth->>Auth: Create user account
+    Auth->>User: Send confirmation email
+    User->>Auth: Click email link
+    Auth->>DB: Insert into profiles table
+    Auth->>App: Return session
+    App->>User: Redirect to homepage
+```
+
+### Data Flow
+
+```mermaid
+graph LR
+    A[User Action] --> B{What action?}
+    B -->|View Opportunities| C[Fetch from DB]
+    B -->|Add Favorite| D[Insert to favorites]
+    B -->|Compare| E[Local state only]
+    B -->|Admin Add| F[Insert to opportunities]
+    
+    C --> G[(Supabase)]
+    D --> G
+    F --> G
+    
+    G --> H[RLS Check]
+    H --> I{Authorized?}
+    I -->|Yes| J[Return data]
+    I -->|No| K[Error 403]
+```
+
+---
+
 ## 🔧 Available Scripts
 
 ```bash
