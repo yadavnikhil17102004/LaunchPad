@@ -27,16 +27,17 @@
 
 ## ✨ What is LaunchPad?
 
-**LaunchPad** is a one-stop platform that aggregates **hackathons**, **coding contests**, and **internships** from 50+ sources worldwide. Built for students and developers who want to discover opportunities without checking multiple websites.
+**LaunchPad** is a one-stop platform that aggregates **hackathons**, **coding contests**, and **internships** from multiple live sources worldwide. Built for students and developers who want to discover opportunities without checking multiple websites.
 
 ### 🎯 Key Highlights
 
-- **70+ Opportunities** - Curated hackathons, contests, and internships
-- **Real-time Updates** - Live data from Codeforces, Devfolio, MLH, Unstop & more
+- **140-155 Opportunities** - Mix of live and curated opportunities
+- **65-75% Live Data** - Real-time updates from 6 different APIs
+- **5+ Live Sources** - Codeforces, Kontests, GitHub, HackerEarth, Edge Function, Database
 - **Smart Filtering** - Filter by type, deadline, location, and search
 - **Compare Tool** - Side-by-side comparison of up to 3 opportunities
 - **Favorites** - Save opportunities to your personal list
-- **AI Ideas** - Get project ideas and interview prep tips
+- **Instant Load** - Curated fallback ensures no blank pages
 
 ---
 
@@ -138,14 +139,17 @@ VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key
 
 LaunchPad uses a **3-layer data strategy** to ensure users always see fresh opportunities:
 
-#### 🌐 Layer 1: Live APIs (30-40% of data)
+#### 🌐 Layer 1: Live APIs (65-75% of data)
 | Source | Type | Status | Count |
 |--------|------|--------|-------|
 | Codeforces API | Contests | ✅ Live | 10-15 |
-| Kontests API | Multi-platform | ✅ Live | 15-20 |
+| Kontests API (Edge Function) | Multi-platform | ✅ Deployed | 15-20 |
+| GitHub Issues API | Community Hackathons | ✅ Live | 5-10 |
+| HackerEarth API | Challenges | ✅ Live | 5-10 |
 | Supabase Database | Admin-added | ✅ Live | Varies |
+| **Total Live** | **Mixed** | | **71-86** |
 
-#### 📚 Layer 2: Curated Fallback (60-70% of data)
+#### 📚 Layer 2: Curated Fallback (25-35% of data)
 | Category | Count |
 |----------|-------|
 | Major Hackathons | 7 (SIH, GSoC, MLH, ETHGlobal, etc.) |
@@ -153,7 +157,7 @@ LaunchPad uses a **3-layer data strategy** to ensure users always see fresh oppo
 | Indian Events | 40+ (IIT/NIT fests, TCS CodeVita, Flipkart GRiD) |
 | Weekly Contests | 10+ (LeetCode, AtCoder, HackerRank) |
 
-**Total Available**: ~100-110 opportunities at any time
+**Total Available**: ~140-155 opportunities at any time
 
 #### How It Works
 ```mermaid
