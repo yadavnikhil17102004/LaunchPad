@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://opportune.vercel.app">Live Demo</a> •
+  <a href="https://launch-pad-navy.vercel.app">Live Demo</a> •
   <a href="#features">Features</a> •
   <a href="#quick-start">Quick Start</a> •
   <a href="#tech-stack">Tech Stack</a>
