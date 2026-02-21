@@ -1,447 +1,72 @@
-<p align="center">
-  <img src="public/favicon-new.svg" alt="LaunchPad Logo" width="80" height="80">
-</p>
+# 🚀 LaunchPad
 
-<h1 align="center">LaunchPad</h1>
+> _A hyper-optimized aggregation engine for discovering Hackathons, Internships, and Coding Contests._
 
-<p align="center">
-  <strong>🚀 Discover Hackathons, Internships & Coding Contests</strong>
-</p>
+## ⚡ What is this?
 
-<p align="center">
-  <a href="https://launch-pad-navy.vercel.app">Live Demo</a> •
-  <a href="#features">Features</a> •
-  <a href="#quick-start">Quick Start</a> •
-  <a href="#tech-stack">Tech Stack</a>
-</p>
+LaunchPad is a centralized intelligence dashboard designed to scrape, aggregate, and display high-value tech opportunities from over 50+ global sources. Built for developers who want to minimize tracking overhead and maximize execution.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/React-18.3-61DAFB?logo=react" alt="React">
-  <img src="https://img.shields.io/badge/TypeScript-5.6-3178C6?logo=typescript" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Vite-5.4-646CFF?logo=vite" alt="Vite">
-  <img src="https://img.shields.io/badge/TailwindCSS-3.4-06B6D4?logo=tailwindcss" alt="TailwindCSS">
-  <img src="https://img.shields.io/badge/Supabase-Backend-3FCF8E?logo=supabase" alt="Supabase">
-</p>
+## 🎯 Core Capabilities
 
----
+- **Real-Time Aggregation**: Live datastreams from Codeforces, Devfolio, MLH, Unstop, and proprietary scraped lists.
+- **Smart Filtering Engine**: Rapid sorting by opportunity type, deadline urgency, and location metrics.
+- **Side-by-Side Comparison**: Evaluate up to 3 different events or internships simultaneously.
+- **AI-Driven Edge**: Integrated AI project ideation and interview preparation workflows.
+- **Favorites Architecture**: State-preserved tracking of shortlisted opportunities.
 
-## ✨ What is LaunchPad?
+## 🛠 Tech Stack (Frontend + Edge)
 
-**LaunchPad** is a one-stop platform that aggregates **hackathons**, **coding contests**, and **internships** from multiple live sources worldwide. Built for students and developers who want to discover opportunities without checking multiple websites.
+- **Core**: React 18, TypeScript, Vite
+- **Styling**: TailwindCSS, Radix UI, shadcn/ui
+- **State & Routing**: React Router, TanStack Query
+- **Backend Infrastructure**: Supabase (PostgreSQL + Auth + Serverless Edge Functions)
 
-### 🎯 Key Highlights
+## 📦 Rapid Deployment
 
-- **140-155 Opportunities** - Mix of live and curated opportunities
-- **65-75% Live Data** - Real-time updates from 6 different APIs
-- **5+ Live Sources** - Codeforces, Kontests, GitHub, HackerEarth, Edge Function, Database
-- **Smart Filtering** - Filter by type, deadline, location, and search
-- **Compare Tool** - Side-by-side comparison of up to 3 opportunities
-- **Favorites** - Save opportunities to your personal list
-- **Instant Load** - Curated fallback ensures no blank pages
-
----
-
-## 🚀 Features
-
-### For Students & Developers
-
-| Feature | Description |
-|---------|-------------|
-| 🔍 **Smart Search** | Search by title, company, or tags |
-| 🏷️ **Filter by Type** | Hackathons, Internships, or Contests |
-| 📅 **Deadline Sorting** | Never miss a deadline |
-| ⚡ **Compare Tool** | Compare up to 3 opportunities side-by-side |
-| ❤️ **Favorites** | Save opportunities to your profile |
-| 💡 **Get Ideas** | AI-powered project ideas & prep guides |
-| 📱 **Mobile Ready** | Responsive design for all devices |
-| 🌙 **Dark Mode** | Easy on the eyes |
-
-### For Admins
-
-- **Admin Panel** - Add/edit/delete opportunities
-- **User Management** - Manage admin roles
-- **Database Control** - Full CRUD operations
-
----
-
-## 🖼️ Screenshots
-
-<details>
-<summary>Click to view screenshots</summary>
-
-### Home Page
-The main dashboard showing all opportunities with filters and search.
-
-### Opportunity Card
-Each card shows title, deadline, prize, location, and quick actions.
-
-### Compare Modal
-Side-by-side comparison of selected opportunities.
-
-### Admin Panel
-Manage opportunities with full CRUD functionality.
-
-</details>
-
----
-
-## ⚡ Quick Start
-
-### Prerequisites
-
-- Node.js 18+ 
-- npm or bun
-
-### Installation
+**1. Clone the environment**
 
 ```bash
-# Clone the repository
 git clone https://github.com/yadavnikhil17102004/LaunchPad.git
 cd LaunchPad
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
 ```
 
-The app will be running at `http://localhost:8080`
+**2. Initialize dependencies**
 
-### Environment Variables
+```bash
+npm install
+```
 
-Create a `.env` file in the root:
+**3. Configure Supabase Environment**
+Create a `.env` file in the root directory:
 
 ```env
 VITE_SUPABASE_URL=your_supabase_url
 VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key
 ```
 
----
+**4. Spin up the dev server**
 
-## 🛠️ Tech Stack
-
-### Frontend
-- **React 18** - UI framework with hooks
-- **TypeScript** - Type-safe development
-- **Vite** - Lightning-fast build tool
-- **TailwindCSS** - Utility-first styling
-- **Radix UI** - Accessible component primitives
-- **shadcn/ui** - Beautiful component library
-- **React Router** - Client-side routing
-- **TanStack Query** - Server state management
-
-### Backend
-- **Supabase** - PostgreSQL + Auth + Edge Functions
-- **Supabase Edge Functions** - Serverless data aggregation
-
-### Data Sources
-
-LaunchPad uses a **3-layer data strategy** to ensure users always see fresh opportunities:
-
-#### 🌐 Layer 1: Live APIs (65-75% of data)
-| Source | Type | Status | Count |
-|--------|------|--------|-------|
-| Codeforces API | Contests | ✅ Live | 10-15 |
-| Kontests API (Edge Function) | Multi-platform | ✅ Deployed | 15-20 |
-| GitHub Issues API | Community Hackathons | ✅ Live | 5-10 |
-| HackerEarth API | Challenges | ✅ Live | 5-10 |
-| Supabase Database | Admin-added | ✅ Live | Varies |
-| **Total Live** | **Mixed** | | **71-86** |
-
-#### 📚 Layer 2: Curated Fallback (25-35% of data)
-| Category | Count |
-|----------|-------|
-| Major Hackathons | 7 (SIH, GSoC, MLH, ETHGlobal, etc.) |
-| Internships | 4 (GSoC, MLH Fellowship, Outreachy, LFX) |
-| Indian Events | 40+ (IIT/NIT fests, TCS CodeVita, Flipkart GRiD) |
-| Weekly Contests | 10+ (LeetCode, AtCoder, HackerRank) |
-
-**Total Available**: ~140-155 opportunities at any time
-
-#### How It Works
-```mermaid
-graph LR
-    A[User Opens App] --> B{Data Loading}
-    B -->|0ms| C[Show Curated Data Instantly]
-    B -->|500ms| D[Fetch Live APIs]
-    D --> E[Codeforces Contests]
-    D --> F[Database Opportunities]
-    C --> G[Merge All Sources]
-    E --> G
-    F --> G
-    G --> H[Filter Future Events]
-    H --> I[Remove Duplicates]
-    I --> J[Sort by Deadline]
-    J --> K[Display to User]
+```bash
+npm run dev
 ```
 
-**Why This Works:**
-- ✅ **Instant Display**: Curated data shows immediately (no blank page)
-- ✅ **Always Fresh**: Live APIs provide real-time contest updates
-- ✅ **Never Fails**: Curated fallback ensures content even if APIs are down
-- ✅ **Comprehensive**: Mix of global events, Indian hackathons, and live contests
+_The dashboard will be active at `http://localhost:8080`._
 
----
+## 🏗 Architecture Layout
 
-## 📁 Project Structure
-
-```
+```text
 LaunchPad/
 ├── src/
-│   ├── components/       # React components
-│   │   ├── ui/          # shadcn/ui components
-│   │   ├── Header.tsx
-│   │   ├── OpportunityCard.tsx
-│   │   ├── OpportunityGrid.tsx
-│   │   └── ...
-│   ├── hooks/           # Custom React hooks
-│   │   ├── useOpportunities.tsx
-│   │   ├── useAuth.tsx
-│   │   ├── useFavorites.tsx
-│   │   └── useCompare.tsx
-│   ├── pages/           # Route pages
-│   │   ├── Index.tsx
-│   │   ├── Auth.tsx
-│   │   ├── Admin.tsx
-│   │   └── Favorites.tsx
-│   ├── integrations/    # Supabase client
-│   └── types/           # TypeScript types
+│   ├── components/       # Core UI & shadcn primitives
+│   ├── hooks/            # Custom logic (useAuth, useFavorites)
+│   ├── pages/            # Application routes (Index, Admin)
+│   ├── integrations/     # Supabase client singletons
+│   └── types/            # Strict TypeScript definitions
 ├── supabase/
-│   └── functions/       # Edge Functions
-├── public/              # Static assets
-└── package.json
+│   └── functions/        # Serverless data aggregation logic
+└── public/               # Static assets
 ```
 
----
+## 🔒 Administration
 
-## 🏗️ Architecture
-
-### System Overview
-
-```mermaid
-graph TB
-    subgraph "User's Browser"
-        A[React App]
-        B[React Router]
-        C[TanStack Query]
-    end
-    
-    subgraph "Vercel CDN"
-        D[Static Assets]
-        E[index.html]
-    end
-    
-    subgraph "Supabase Backend"
-        F[(PostgreSQL Database)]
-        G[Authentication Service]
-        H[Edge Functions]
-        I[Row Level Security]
-    end
-    
-    subgraph "External APIs"
-        J[Kontests API]
-        K[Firecrawl API]
-    end
-    
-    A --> D
-    A --> E
-    B --> A
-    C --> A
-    A --> G
-    A --> F
-    A --> H
-    H --> J
-    H --> K
-    F --> I
-    G --> I
-```
-
-### Deployment Flow
-
-```mermaid
-sequenceDiagram
-    participant Dev as Developer
-    participant Git as GitHub
-    participant Vercel as Vercel
-    participant User as End User
-    
-    Dev->>Dev: Make code changes
-    Dev->>Git: git push origin main
-    Git->>Vercel: Webhook trigger
-    Vercel->>Vercel: npm install
-    Vercel->>Vercel: vite build
-    Vercel->>Vercel: Deploy to CDN
-    Vercel->>Dev: Deployment URL
-    User->>Vercel: Visit app
-    Vercel->>User: Serve React app
-```
-
-### Authentication Flow
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant App as React App
-    participant Auth as Supabase Auth
-    participant DB as Supabase DB
-    
-    User->>App: Click "Sign Up"
-    App->>Auth: supabase.auth.signUp()
-    Auth->>Auth: Create user account
-    Auth->>User: Send confirmation email
-    User->>Auth: Click email link
-    Auth->>DB: Insert into profiles table
-    Auth->>App: Return session
-    App->>User: Redirect to homepage
-```
-
-### Data Flow
-
-```mermaid
-graph LR
-    A[User Action] --> B{What action?}
-    B -->|View Opportunities| C[Fetch from DB]
-    B -->|Add Favorite| D[Insert to favorites]
-    B -->|Compare| E[Local state only]
-    B -->|Admin Add| F[Insert to opportunities]
-    
-    C --> G[(Supabase)]
-    D --> G
-    F --> G
-    
-    G --> H[RLS Check]
-    H --> I{Authorized?}
-    I -->|Yes| J[Return data]
-    I -->|No| K[Error 403]
-```
-
-```
-
----
-
-## 🗺️ Roadmap
-
-### 🏃‍♂️ Short-Term (This Week)
-- [ ] Create admin account and access admin panel
-- [ ] Clean database duplicates
-- [ ] Add 10-15 current hackathons via Admin Panel
-- [ ] Test and improve social media sharing
-
-### 📈 Medium-Term (This Month)
-
-#### Features
-- [ ] Email notifications (weekly digest, deadline reminders)
-- [ ] Advanced filters (prize range, difficulty, technology tags)
-- [ ] User profile enhancements (activity tracking, favorites count)
-- [ ] SEO improvements (meta tags, sitemap, schema.org markup)
-
-#### Performance
-- [ ] API response caching (30-minute TTL)
-- [ ] Image optimization and lazy loading
-- [ ] Code splitting for faster load times
-
-#### Growth
-- [ ] Analytics integration (Vercel Analytics / Google Analytics)
-- [ ] Content marketing (blog posts, tutorials)
-- [ ] Community outreach (Reddit, Twitter, Product Hunt)
-
-### 🚀 Long-Term (2-3 Months)
-
-#### Platform
-- [ ] Mobile PWA app (offline support, push notifications)
-- [ ] Community features (reviews, discussions, team formation)
-- [ ] AI integration (smart recommendations, project idea generator)
-- [ ] Premium tier ($5/month with extra features)
-
-#### Expansion
-- [ ] Browser extension
-- [ ] Partnership with MLH, Devfolio, university career centers
-- [ ] API for third-party integrations
-- [ ] Multi-language support
-
-#### Technical
-- [ ] Migrate to Next.js (optional, for better SEO)
-- [ ] Add comprehensive testing (unit, integration, E2E)
-- [ ] CI/CD improvements (automated testing, type checking)
-
-### 💡 Feature Ideas
-- User testimonials and success stories
-- Hackathon calendar view
-- Export opportunities to Google Calendar/iCal
-- Dark mode improvements
-- Accessibility enhancements (WCAG 2.1 AA)
-- API rate limit monitoring dashboard
-
-> **Note**: Priorities may shift based on user feedback and usage analytics. See [detailed roadmap](https://github.com/yadavnikhil17102004/LaunchPad/issues) for progress tracking.
-
----
-
-## 🔧 Available Scripts
-
-```bash
-# Development
-npm run dev          # Start dev server
-
-# Production
-npm run build        # Build for production
-npm run preview      # Preview production build
-
-# Code Quality
-npm run lint         # Run ESLint
-```
-
----
-
-## 🌐 Deployment
-
-### Vercel (Recommended)
-
-1. Push to GitHub
-2. Import project in Vercel
-3. Add environment variables
-4. Deploy!
-
-### Netlify
-
-```bash
-npm run build
-# Deploy dist/ folder
-```
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! 
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
-
-## 👤 Author
-
-**Nikhil Yadav**
-
-- GitHub: [@yadavnikhil17102004](https://github.com/yadavnikhil17102004)
-- Email: yadavnikhil17102004@gmail.com
-
----
-
-<p align="center">
-  Made with ❤️ for the developer community
-</p>
-
-<p align="center">
-  ⭐ Star this repo if you find it helpful!
-</p>
+LaunchPad includes a full built-in RBAC (Role-Based Access Control) Admin panel out of the box, allowing operators to execute complete CRUD operations on the opportunity database dynamically.
